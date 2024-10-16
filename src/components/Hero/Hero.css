@@ -1,0 +1,21 @@
+#hero {
+  background-color: whitesmoke;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+}
+#hero > h2 {
+  font-size: 60px;
+  max-width: 1000px;
+  text-align: center;
+  padding-bottom: 30px;
+  color: rgb(17, 9, 88);
+}
+#hero > p {
+  font-size: 25px;
+  max-width: 900px;
+  text-align: center;
+  color: rgb(17, 9, 88);
+}

@@ -1,0 +1,24 @@
+header {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+  position: sticky;
+  top: 0px;
+  background: linear-gradient(
+    rgba(23, 22, 24, 0.949) 0%,
+    rgba(130, 30, 120, 0.922) 100%
+  );
+}
+
+nav {
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+}
+nav > a {
+  text-decoration: none;
+  font-size: 22px;
+  color: rgb(237, 237, 237);
+}
