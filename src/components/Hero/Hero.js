@@ -1,6 +1,7 @@
 import './Hero.css'
 
 export const Hero = () => {
+  const main = document.querySelector('main')
   const hero = document.createElement('section')
   hero.id = 'hero'
   const texto = document.createElement('h2')

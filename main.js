@@ -1,12 +1,11 @@
 import { Header } from './src/components/Header/Header'
-import { Hero } from './src/components/Hero/Hero'
+
 import { Home } from './src/pages/Home/Home'
 // import { LoginRegister } from './src/pages/LoginRegister/LoginRegister'
 import './style.css'
 
-const Main = () => {
+const init = () => {
   Header()
-  Hero()
   Home()
 }
-Main()
+init()

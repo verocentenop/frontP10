@@ -1,12 +1,13 @@
 import { Home } from '../../pages/Home/Home'
-import { LoginRegister } from '../../pages/LoginRegister/LoginRegister'
+import { LoginBox } from '../../pages/Login/Login'
+import { RegisterBox } from '../../pages/Register/Register'
 import './Header.css'
 
 const routes = [
-  { texto: 'Inicio', funcion: Home },
-  { texto: 'Acceso', funcion: LoginRegister }
-  // { texto: 'CreateEvent', funcion: CreateEvent },
-  // { texto: 'Home', funcion: Home }
+  { texto: 'Inicio', funcion: Home, path: '/inicio' },
+  // { texto: 'Mis Favoritos', funcion: Favoritos },
+  { texto: 'Acceso', funcion: LoginBox, path: '/login' },
+  { texto: 'Regístrate', funcion: RegisterBox, path: '/registro' }
 ]
 
 export const Header = () => {
@@ -17,17 +18,22 @@ export const Header = () => {
   const nav = document.createElement('nav')
   for (const route of routes) {
     const a = document.createElement('a')
-    a.href = '#'
+    a.href = route.path
     if (route.texto === 'Acceso' && localStorage.getItem('token')) {
       a.textContent = 'Cerrar Sesión'
-      a.addEventListener('click', () => {
-        localStorage.removeItem('token')
-        Header()
+      a.addEventListener('click', (e) => {
+        e.preventDefault()
+        localStorage.clear()
+        window.location.reload()
         removeLoginForm()
       })
     } else {
       a.textContent = route.texto
-      a.addEventListener('click', route.funcion)
+      a.addEventListener('click', (e) => {
+        e.preventDefault()
+        window.history.pushState({}, '', route.path)
+        route.funcion()
+      })
     }
 
     nav.append(a)

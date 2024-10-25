@@ -1,21 +1,22 @@
+import './Login.css'
 import { Header } from '../../components/Header/Header'
 import { Home } from '../Home/Home'
-import './LoginRegister.css'
 
-export const LoginRegister = () => {
+export const LoginBox = () => {
   const main = document.querySelector('main')
   main.innerHTML = ''
 
-  const loginContainer = document.createElement('section')
-  loginContainer.id = 'login'
+  const sectionContainer = document.createElement('section')
+  sectionContainer.id = 'login-section'
 
-  main.append(loginContainer)
-  Login(loginContainer)
+  main.append(sectionContainer)
+  Login(sectionContainer)
 }
 
-export const Login = (ePadre) => {
+export const Login = () => {
+  const container = document.querySelector('#login-section')
   const form = document.createElement('form')
-
+  form.id = 'login'
   const inputUser = document.createElement('input')
   const inputPassword = document.createElement('input')
   const button = document.createElement('button')
@@ -26,14 +27,16 @@ export const Login = (ePadre) => {
   inputPassword.id = 'password'
   inputUser.id = 'userName'
   button.textContent = 'Acceder'
+
   inputPassword.type = 'password'
 
-  ePadre.append(form)
+  container.append(form)
   form.append(inputUser, inputPassword, button)
-  form.addEventListener('submit', () =>
-    submit(inputUser.value, inputPassword.value)
-  )
+  form.addEventListener('submit', (e) => {
+    e.preventDefault(), submit(inputUser.value, inputPassword.value)
+  })
 }
+
 const submit = async (userName, password) => {
   const objFinal = JSON.stringify({ userName, password })
 
@@ -68,37 +71,6 @@ const submit = async (userName, password) => {
   localStorage.setItem('token', infoFinal.token)
   localStorage.setItem('usuario', JSON.stringify(infoFinal.usuario))
 
+  document.querySelector('#app').innerHTML = ''
   Home()
-  Header()
 }
-// const submit = async (userName, password) => {
-//   const objFinal = JSON.stringify({ userName, password })
-
-//   const info = {
-//     method: 'POST',
-//     body: objFinal,
-//     headers: { 'Content-Type': 'application/json' }
-//   }
-
-//   const res = await fetch('http://localhost:3000/api/v1/usuarios/login', info)
-
-//   if (res.status === 400) {
-//     const form = document.querySelector('form')
-//     let existingError = document.querySelector('.inputError')
-
-//     if (!existingError) {
-//       const inputError = document.createElement('p')
-//       inputError.textContent = 'Usuario o contraseña incorrectos'
-//       inputError.className = 'inputError'
-//       form.append(inputError)
-//       return
-//     }
-//   }
-
-//   const infoFinal = await res.json()
-
-//   localStorage.setItem('token', infoFinal.token)
-//   localStorage.setItem('usuario', JSON.stringify(infoFinal.usuario))
-// }
-
-// http://localhost:3000/api/v1/usuarios/login

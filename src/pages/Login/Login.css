@@ -1,29 +1,28 @@
-#login > form {
+#login {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 30px;
   background-color: hsla(20, 100%, 99%, 0.7);
   height: fit-content;
-  width: 230px;
-  padding: 50px;
+  width: fit-content;
+  padding: 35px;
   border-radius: 15px;
   cursor: pointer;
 }
-section {
+#login-section {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-#login > form > input {
-  padding: 15px;
+#login > input {
+  padding: 10px;
   width: 200px;
   border-radius: 15px;
   font-size: 15px;
 }
-#login > form > button {
+#login > button {
   padding: 10px;
   border-radius: 8px;
   background-color: rgb(65, 18, 109);
